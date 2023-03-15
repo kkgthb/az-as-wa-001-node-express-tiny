@@ -1,0 +1,42 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- script: npm install
+  displayName: 'Install node module dependencies from NPM'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './node_modules'
+    Contents: '**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/node_modules'
+  displayName: 'Copy Node modules into root of build-artifact staging directory'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './src/web'
+    Contents: '**/*'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy application logic into root of build-artifact staging directory'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '.'
+    Contents: 'package.json'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy Node-config file into root of build-artifact staging directory'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathToPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'MyBuiltWebsite'
+  displayName: 'Publish build-artifact from staging directory to named artifact'
