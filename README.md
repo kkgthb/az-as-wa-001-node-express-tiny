@@ -50,4 +50,8 @@ The `Deploy Azure App Service` log claims to have "Successfully deployed web pac
 
 Thanks [Donald](https://www.linkedin.com/in/donald-c-20842944/) for troubleshooting that the `server.js` script needs to be `const port = (process.env.PORT || 3000);` not `const port = 3000;` ~~and that the **Settings** -> **Configuration** for the Azure web app resource needed an extra **application setting** added to it with a **Name** of `PORT` and a **Value** of `3000`~~ _(configurable by appending ` -PORT 3000` to **App settings** under the `Deploy Azure App Service` task of the release pipeline as an alternative, but actually not needed at all -- fine to just let Azure App Service Web App resource pick a random port at its leisure and implicitly set `PORT` now that we have `const port = (process.env.PORT || 3000);` in place.  I deleted the extra **application setting** and tried, and confirmed it to be the case that nothing in all of Azure config needs to think about a number `3000` at all -- that can just be a handy thing for testing on my local machine)_.
 
+[Docs:](https://learn.microsoft.com/en-us/azure/app-service/configure-language-nodejs?pivots=platform-linux#get-port-number)
+
+> Your Node.js app needs to listen to the right port to receive incoming requests.  App Service sets the environment variable PORT in the Node.js container, and forwards the incoming requests to your container at that port number. To receive the requests, your app should listen to that port using `process.env.PORT`.
+
 My site is live on the internet now!
