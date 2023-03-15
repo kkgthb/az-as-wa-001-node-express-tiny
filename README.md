@@ -45,3 +45,9 @@ I also change **Runtime Stack** to **18 LTS (Node|18-lts)** and make sure **Star
 Then I click **Create release** in the upper right and watch the logs.
 
 The `Deploy Azure App Service` log claims to have "Successfully deployed web package to App Service", but when I visit `http://my-app-service-name.azurewebsites.net`, it takes forever and finally 504-errors out.
+
+---
+
+Thanks [Donald](https://www.linkedin.com/in/donald-c-20842944/) for troubleshooting that the `server.js` script needs to be `const port = (process.env.PORT || 3000);` not `const port = 3000;` and that the **Settings** -> **Configuration** for the Azure web app resource needed an extra **application setting** added to it with a **Name** of `PORT` and a **Value** of `3000`.
+
+My site is live on the internet now!
