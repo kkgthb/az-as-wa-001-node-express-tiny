@@ -14,6 +14,9 @@ steps:
 - script: npm install
   displayName: 'Install node module dependencies from NPM'
 
+- script: npm run build
+  displayName: 'Build source code into a runtime'
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: './dist'
