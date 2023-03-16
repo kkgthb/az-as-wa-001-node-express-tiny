@@ -5,12 +5,22 @@
     "copypackagejsontotemp": "shx mkdir -p ./temp && shx cp ./package.json ./temp/package.json",
     "installproductionnodemodules": "cd ./temp && npm install --production",
     "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx cp -r ./temp/node_modules/ ./dist/node_modules/ && shx rm -rf ./dist/web",
-    "removetemp": "shx rm -rf ./temp"
+    "removetemp": "shx rm -rf ./temp",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "dependencies": {
     "express": "latest"
   },
   "devDependencies": {
-    "shx": "latest"
+    "cross-env": "latest",
+    "jest": "latest",
+    "shx": "latest",
+    "supertest": "latest"
   }
 }
