@@ -16,6 +16,10 @@ steps:
 # support the Node.js version you're building a runtime for 
 # quite as early as NodeTool@0 will install a Node.js version into your short-lived "build machine".
 # https://social.msdn.microsoft.com/Forums/en-US/ed62e95d-7e04-4936-bf3f-6699e2d00a9e/which-node-versions-are-currently-supported-on-azure?forum=windowsazurewebsitespreview
+# Oh.  lol, that and I just tried it after writing this message and got a pipeline error during this step saying 
+# "Unable to find Node version lts/* for platform linux and architecture x64"
+# So there you go.  You have to at least specify a major version number of Node to build your runtime out of 
+# as part of your build CI/CD pipeline.
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
