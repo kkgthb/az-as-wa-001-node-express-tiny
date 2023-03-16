@@ -22,3 +22,7 @@
 # Ignore "dist", my static output folder
 /dist/
 /dist/**
+
+# Ignore "jest_unit_test_results", my test-result output folder
+/jest_unit_test_results/
+/jest_unit_test_results/**
