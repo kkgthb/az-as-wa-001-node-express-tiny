@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "start": "node ./server.js",
     "build": "npm run donodemodulesstuff && npm run copyfilestodist && npm run removetemp",
     "donodemodulesstuff": "npm run copypackagejsontotemp && npm run installproductionnodemodules",
     "copypackagejsontotemp": "shx mkdir -p ./temp && shx cp ./package.json ./temp/package.json",
