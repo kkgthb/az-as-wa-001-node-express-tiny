@@ -1,4 +1,4 @@
-## The smallest Azure DevOps website you can make that will test and build an Azure App Services Web App
+# The smallest Azure DevOps website you can make that will test and build an Azure App Services Web App
 
 1. The entire "application" rendering "**Hello World**" to this web server's homepage is in the 16 lines of code in `/src/web/server.js`.
 2. The suite of "build-time unit tests" confirming that the homepage does indeed say "Hello World!" in the 22 lines of code in `/src/__tests__/my-first-test.js`.
