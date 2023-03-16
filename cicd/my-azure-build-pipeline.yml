@@ -6,6 +6,16 @@ pool:
 
 steps:
 
+# Note:  While you could replace the inputs as follows:
+#   inputs:
+#     versionSource: fromFile
+#     versionFilePath: './.nvmrc'
+# and create an ".nvmrc" file whose contents read "lts/*"
+# instead of hard-coding something like "18.x",
+# you shouldn't, because Azure Web App hosting might not 
+# support the Node.js version you're building a runtime for 
+# quite as early as NodeTool@0 will install a Node.js version into your short-lived "build machine".
+# https://social.msdn.microsoft.com/Forums/en-US/ed62e95d-7e04-4936-bf3f-6699e2d00a9e/which-node-versions-are-currently-supported-on-azure?forum=windowsazurewebsitespreview
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
