@@ -4,7 +4,7 @@
     "donodemodulesstuff": "npm run copypackagejsontotemp && npm run installproductionnodemodules",
     "copypackagejsontotemp": "shx mkdir -p ./temp && shx cp ./package.json ./temp/package.json",
     "installproductionnodemodules": "cd ./temp && npm install --production",
-    "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx mkdir -p ./dist/node_modules && shx cp -r ./temp/node_modules ./dist/node_modules && shx rm -rf ./dist/web",
+    "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx cp -r ./temp/node_modules/ ./dist/node_modules/ && shx rm -rf ./dist/web",
     "removetemp": "shx rm -rf ./temp"
   },
   "dependencies": {
