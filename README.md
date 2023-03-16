@@ -8,7 +8,6 @@ Anyway, once I clone this repo into an Azure DevOps repo and click **Pipelines**
 MyBuiltWebsite/
 ├─ node_modules/
 │  └─ ...
-├─ package.json
 └─ server.js
 ```
 
@@ -24,7 +23,7 @@ In the **Select a template** flyout at right, I choose **Deploy a Node.js app to
 
 I rename **Stage name** to something like `My arbitrary stage name`, then at left click on the **1 job, 1 task** link.
 
-In the `My arbitrary stage name` task up top, I drop down **Azure subscription** and set it to the one showing up under **Available Azure service connections** _(which I'd already set up earlier by choosing the one under **Available Azure Subscriptions**, dropping down the **Authorize** extended picklist, clicking **Advanced options**, leaving it on **Service Principal Authentication**, setting the **Resource Group** to the same one that I'd already created an F1 Linux Azure App Service Plan resource and an Azure Web App resource in, clicking the **Allow all pipelines to use this connection** checkbox, and clicking **OK**)_.  I also change **App type** to **Web App on Linux**, pick the Azure Web App I'd already created out of the **App Service Name** dropdown, and set **Startup command** to `npm start**`.
+In the `My arbitrary stage name` task up top, I drop down **Azure subscription** and set it to the one showing up under **Available Azure service connections** _(which I'd already set up earlier by choosing the one under **Available Azure Subscriptions**, dropping down the **Authorize** extended picklist, clicking **Advanced options**, leaving it on **Service Principal Authentication**, setting the **Resource Group** to the same one that I'd already created an F1 Linux Azure App Service Plan resource and an Azure Web App resource in, clicking the **Allow all pipelines to use this connection** checkbox, and clicking **OK**)_.  I also change **App type** to **Web App on Linux**, pick the Azure Web App I'd already created out of the **App Service Name** dropdown, and set **Startup command** to `node ./server.js`.
 
 In the `Run on agent` slightly indented task below that, I change the **Agent pool** to **Azure Pipelines** and the **Agent Specification** to **ubuntu-latest**.
 
@@ -36,11 +35,10 @@ Linked artifacts/
 │  ├─ MyBuiltWebsite/
 │  │  ├─ node_modules/
 │  │  │  └─ ...
-│  │  ├─ package.json
 │  │  └─ server.js
 ```
 
-I also change **Runtime Stack** to **18 LTS (Node|18-lts)** and make sure **Startup command** says `npm start`.
+I also change **Runtime Stack** to **18 LTS (Node|18-lts)** and make sure **Startup command** says `node ./server.js`.
 
 Then I click **Create release** in the upper right and watch the logs.
 
