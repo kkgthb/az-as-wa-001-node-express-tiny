@@ -16,24 +16,10 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: './node_modules'
-    Contents: '**/*'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/node_modules'
-  displayName: 'Copy Node modules into root of build-artifact staging directory'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: './src/web'
+    SourceFolder: './dist'
     Contents: '**/*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy application logic into root of build-artifact staging directory'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '.'
-    Contents: 'package.json'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy Node-config file into root of build-artifact staging directory'
+  displayName: 'Copy runtime into root of build-artifact staging directory'
 
 - task: PublishBuildArtifacts@1
   inputs:
