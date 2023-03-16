@@ -53,3 +53,7 @@ Thanks [Donald](https://www.linkedin.com/in/donald-c-20842944/) for troubleshoot
 > Your Node.js app needs to listen to the right port to receive incoming requests.  App Service sets the environment variable PORT in the Node.js container, and forwards the incoming requests to your container at that port number. To receive the requests, your app should listen to that port using `process.env.PORT`.
 
 My site is live on the internet now!
+
+---
+
+New and improved:  now with a more standard-looking `npm run tests` + `npm run build`-looking CI/CD pipeline and with build-time unit test results that appear in Azure DevOps's "Test Plans -> Runs" portal!
