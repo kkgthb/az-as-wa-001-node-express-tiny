@@ -12,4 +12,5 @@ if (process.env.NODE_ENV !== "test") {
   });
 }
 
+// Thank you to https://stackoverflow.com/a/33988296 for the tip to add this line to get Jest working:
 module.exports = app;

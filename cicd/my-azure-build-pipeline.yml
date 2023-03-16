@@ -35,7 +35,13 @@ steps:
 
 - task: PublishTestResults@2
   displayName: 'Publish Jest unit test results to ADO dashboard'
+  # Of course, we want this step to run whether unit tests passed or failed.
+  # I double-checked by editing the test to force-fail, and build/publish still gets skipped if they fail, as we'd expect 
+  # (build doesn't look at whether this step succeeded instead),
+  # so that's a relief.
+  # This seems to be the correct syntax.
   condition: succeededOrFailed()
+  # Thank you to https://www.rupeshtiwari.com/publishing-test-result-using-jest-in-angular/ for making PublishTestResults work with Jest.
   inputs:
     testResultsFormat: JUnit
     testResultsFiles: './jest_unit_test_results/yay-for-junit-formatted-test-results.xml'
