@@ -6,7 +6,7 @@
     "installproductionnodemodules": "cd ./temp && npm install --production",
     "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx cp -r ./temp/node_modules/ ./dist/node_modules/ && shx rm -rf ./dist/web",
     "removetemp": "shx rm -rf ./temp",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --json --outputFile='./yay_for_testing.json'"
   },
   "jest": {
     "testEnvironment": "node",

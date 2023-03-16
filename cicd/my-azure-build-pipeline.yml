@@ -30,6 +30,17 @@ steps:
 - script: npm install
   displayName: 'Install node module dependencies from NPM'
 
+- script: npm run test
+  displayName: 'Does source code pass its own Jest unit tests?'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Jest unit test results to ADO dashboard'
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: Jest
+    testResultsFiles: './yay_for_testing.json'
+    testRunTitle: 'Jest npm-run-test unit test results'
+
 - script: npm run build
   displayName: 'Build source code into a runtime'
 
