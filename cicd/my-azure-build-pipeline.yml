@@ -20,6 +20,8 @@ steps:
 # "Unable to find Node version lts/* for platform linux and architecture x64"
 # So there you go.  You have to at least specify a major version number of Node to build your runtime out of 
 # as part of your build CI/CD pipeline.
+# And you definitely don't want to leave "versionSpec" blank because NodeTool's default is in the 6's even when I wrote this 
+# and the latest LTS was in the 18's!
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
