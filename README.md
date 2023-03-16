@@ -1,3 +1,15 @@
+## The smallest Azure DevOps website you can make that will test and build an Azure App Services Web App
+
+1. The entire "application" rendering "**Hello World**" to this web server's homepage is in the 16 lines of code in `/src/web/server.js`.
+2. The suite of "build-time unit tests" confirming that the homepage does indeed say "Hello World!" in the 22 lines of code in `/src/__tests__/my-first-test.js`.
+3. The Azure DevOps Pipeline configuration file is in the 64 lines of code in `/cicd/my-azure-build-pipeline.yml`.  This is the magic codebase that:
+    * Refuses to "build" a new server-ready runtime if the unit tests fail.  _(e.g. if some Beatles-fan QA changed line 12 of `/src/__tests__/my-first-test.js` to expect the homepage to say "Hello Goodbye" instead)_.
+    * Builds a server-ready runtime and prepares it for deployment to an actual server if the unit tests pass.
+    * Makes sure the unit test results show up beautifully displayed in red and green within the **Azure DevOps** -> **Test Plans** -> **Runs** dashboard.
+4. _(The details of how exactly the Pipeline knows what "testing" and "building" look like are in the 38 lines of code at `/package.json`, but the contents of this file are really cryptic if you're not an experienced web developer and not terribly important to understanding the magic of the codebase.)_
+
+---
+
 My apologies for the unconventional folder structure -- when I'm trying to figure out tooling _around_ a codebase, I like to be sure I'm giving things ["non-magic" filepaths](https://katiekodes.com/break-rebuild-jamstack/).
 
 Anyway, once I clone this repo into an Azure DevOps repo and click **Pipelines** -> **Pipelines** -> **New Pipeline** -> **Azure Repos Git** -> _(`the name of my ADO repo`)_ -> **Existing Azure Pipelines YAML file** -> **Path** of `/cicd/my-azure-build-pipeline.yml` -> **Continue** and run it...
