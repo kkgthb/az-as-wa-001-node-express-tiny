@@ -6,12 +6,23 @@
     "installproductionnodemodules": "cd ./temp && npm install --production",
     "copyfilestodist": "shx cp -r ./src/web/ ./dist && shx cp -r ./temp/node_modules/ ./dist/node_modules/ && shx rm -rf ./dist/web",
     "removetemp": "shx rm -rf ./temp",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --json --outputFile='./yay_for_testing.json'"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
   },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "./jest_unit_test_results",
+          "outputName": "yay-for-junit-formatted-test-results.xml",
+          "suiteName": "I really love testing"
+        }
+      ]
     ]
   },
   "dependencies": {
@@ -20,6 +31,7 @@
   "devDependencies": {
     "cross-env": "latest",
     "jest": "latest",
+    "jest-junit": "latest",
     "shx": "latest",
     "supertest": "latest"
   }
